@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Quake from './components/Quake';
 import './App.css';
 
 function App() {
@@ -8,9 +8,10 @@ function App() {
       <div className="mapContainer">
         ...put Map Component here...
       </div>
+
       <div className="quakeContainer">
-        <h1>Earthquakes from the past week:</h1>
-        ...put Quakes Component here...
+        <h3>Earthquakes from the past week:</h3>
+        <Quake />
       </div>
     </div>
   );
