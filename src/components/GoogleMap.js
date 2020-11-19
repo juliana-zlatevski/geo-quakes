@@ -3,8 +3,8 @@ import { Map, Marker, GoogleApiWrapper } from 'google-maps-react';
 
 const containerStyle = {
   position: 'absolute',
-  width: '40%',
-  height: '90%'
+  width: '50%',
+  height: '95%'
 }
 
 export class MapContainer extends Component {
@@ -39,7 +39,7 @@ export class MapContainer extends Component {
       <Map google={this.props.google}
            containerStyle={containerStyle}
            onClick={this.onMapClicked}
-           zoom={5}
+           zoom={3}
            initialCenter={{ 
               lat: this.state.mapCenter.lat,
               lng: this.state.mapCenter.lng
