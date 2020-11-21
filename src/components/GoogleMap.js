@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Map, Marker, GoogleApiWrapper } from 'google-maps-react';
+import { Google, Map, Marker, GoogleApiWrapper } from 'google-maps-react';
 import QuakeModel from '../models/QuakeModel';
+import image from '../images/earthquake.png';
 
 const containerStyle = {
   position: 'absolute',
@@ -24,14 +25,29 @@ export class MapContainer extends Component {
 
   getQuakes() {
     QuakeModel.all().then((data) => {
-      console.log(data.data.features);
+      this.setState({ quakes: data.data.features });
+      this.renderQuakes();
     })
+  }
+
+  renderQuakes() {
+    const markers = this.state.quakes.map((quake) => {
+      return (
+        <Marker
+          icon={{ url: image, scaledSize: new this.props.google.maps.Size(25, 25) }}
+          position={{ lat: quake.geometry.coordinates[1], 
+                    lng: quake.geometry.coordinates[0] }}
+          key={quake.id} />
+      )
+    })
+    return markers;
   }
  
   render() {
     return (
       <Map google={this.props.google}
            containerStyle={containerStyle}
+
            zoom={2}
            initialCenter={{ 
               lat: this.state.mapCenter.lat,
@@ -48,12 +64,7 @@ export class MapContainer extends Component {
                   lng: this.state.mapCenter.lng
                  }}
                 />
-
-        <Marker position={{ 
-                  lat: 37.774929,
-                  lng: -122.419418
-                 }}
-                />
+        {this.renderQuakes()}
       </Map>
     )
   }
