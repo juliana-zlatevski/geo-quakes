@@ -1,8 +1,7 @@
 import React from 'react';
 import QuakeList from './QuakeList';
 
-const Quake = (props) => {
-    console.log(props);
+const Quake = () => {
     return(
         <div>
             <QuakeList />
