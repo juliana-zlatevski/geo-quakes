@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Google, Map, Marker, GoogleApiWrapper } from 'google-maps-react';
+import { Map, Marker, GoogleApiWrapper } from 'google-maps-react';
 import QuakeModel from '../models/QuakeModel';
 import image from '../images/earthquake.png';
 
